@@ -1,91 +1,69 @@
-# Optical Character Recognition (OCR) Project
+# Customer Churn Prediction Using XGBoost
+This project is focused on predicting customer churn using the XGBoost algorithm, which is well-suited for classification tasks. The dataset used for this project is sourced from Kaggle and includes various features that help determine whether a customer will churn or not.
 
-## Overview
+# Table of Contents
+Introduction
+Dataset
+Installation
+Usage
+Model Building
+Hyperparameter Tuning
+Results
+Contributing
+License
 
-This project aims to provide Optical Character Recognition (OCR) capabilities to users, allowing them to upload an image containing text and extract the characters or text from it. Additionally, it offers the functionality for users to choose the preferred area of the uploaded image to perform OCR, providing flexibility and accuracy.
+# Introduction
+Customer churn prediction is a crucial aspect of maintaining a customer base, particularly for subscription-based businesses. By predicting which customers are likely to leave, companies can take proactive measures to retain them. In this project, we employ the XGBoost classifier to build a model that predicts customer churn based on historical data.
 
-## Features
+## Dataset
+The dataset used in this project is obtained from Kaggle(https://www.kaggle.com/datasets/ermismbatuhan/digital-marketing-ecommerce-customer-behavior) and contains customer information, including features such as average order value, discount rates, product views, and session details.
 
-1. **Image Upload**: Users can upload an image containing text.
-2. **Select Preferred Area**: Users have the option to select the area of the uploaded image from which they want to extract text.
-3. **Text Extraction**: The system processes the uploaded image and extracts the text using OCR algorithms.
-4. **Output Display**: The extracted text is displayed to the user for review or further processing.
+   * File: data.csv
+   * Number of Columns: 20
+   * Target Variable: Churn
 
-## Getting Started
+## Installation
+To run this project, you need to have Python installed along with the necessary libraries. You can install the required dependencies using the following command:
 
-## Initial Requirements
-Install the below requirments
-1. Anaconda: Donwload Link (https://www.anaconda.com/download/success)
-2. Python: Download Link (https://www.python.org/downloads/)
-3. Tessaract: Download Link 
-(For windows: https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-w64-setup-5.3.3.20231005.exe
-Other OS: https://tesseract-ocr.github.io/tessdoc/Compiling.html)
-
-## Edit Environment Variable path
-
-For Windows machine, after Installing the Python and Tessaract edit the enviroment varaible and include the python and tessaract application paths to the sytem variable.
- 
-
-To run this project locally, follow these steps:
-
-1. Clone this repository to your local machine.
-2. Create the environment
+1. Clone the repository:
 
 ```bash
-conda env create -f environment.yml
+git clone https://github.com/Gayathri-Selvaganapathi/customer_churn_prediction.git
+cd customer-churn-prediction
+pip install -r requirements.txt
 ```
+2. Load the dataset:
 
-3. Activate the environment 
+Place the data.csv file in the root directory of the project.
 
-```bash
-conda activate env_ocr  
-```
+3. Run the Jupyter Notebook:
 
-4. Updatin the activated Environment
+Open the Customer_Churn_Prediction.ipynb file in Jupyter Notebook or JupyterLab and run the cells to build and evaluate the model.
 
-```bash
-conda env update -f environment.yml --prune
-```
+## Model Building
 
-5. Run the application by executing the below command.
+1. Data Preprocessing
+    * The dataset initially contains 20 columns, some of which are removed, and others are transformed to be suitable for model training.
+    * Columns such as location_code are converted to categorical data.
+    * Yes/No fields like credit_card_info_save are converted to binary (0/1) format.
+    * Numerical columns with commas are converted to floats for proper mathematical operations.
 
-```bash
-streamlit run app.py
-```
+2. Feature Scaling
+    * The numerical features are scaled using Normalizer to ensure that they are on the same scale, improving model performance.
 
-5. Access the application through the web browser at `http://localhost:8501`.
+3. Model Training
+    * The XGBoost classifier is used to train the model on the processed data.
+    * The dataset is split into training and testing sets with a 67-33 ratio.
+    * The model is evaluated on the test set, and an accuracy score is calculated.
 
-## Usage
+## Hyperparameter Tuning
+Hyperparameter tuning is performed using GridSearchCV to optimize the XGBoost model. Parameters such as max_depth, learning_rate, gamma, and subsample are tuned to improve model performance.
 
-1. **Upload Image**: Click on the upload button and select an image file containing text.
-2. **Select Preferred Area**: If desired, use the bounding to select the preferred area of the uploaded image.
-3. **Extract Text**: Click on the "Convert Text" button to initiate the OCR process.
-4. **View Output**: The extracted text will be displayed on the screen.
+## Results
+   * Initial Model Accuracy: 91.54%
+   * Final Model Accuracy after Tuning: 92.72%
 
-## Technologies Used
+The final model shows a slight improvement after hyperparameter tuning, demonstrating the importance of fine-tuning model parameters for better performance.
 
-- **Python**: The primary programming language used for backend development.
-- **Streamlit**: A lightweight web framework used for building the web application.
-- **pytesseract**: An OCR engine used for recognizing text within images.
-- **GoogleTranslate**: A free and unlimited python library used to translate the text to deseired Languages.
 
-## Google Transalate Supported Languages
 
-https://py-googletrans.readthedocs.io/en/latest/
-
-## Tessaract Supported Languages
-
-https://tesseract-ocr.github.io/tessdoc/Data-Files-in-different-versions.html
-
-## Contributing
-
-Contributions are welcome! If you'd like to contribute to this project, please fork the repository and submit a pull request with your changes.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
-## Acknowledgements
-
-- Special thanks to the developers of Streamlit and Tesseract for their excellent libraries and documentation.
-- This project was inspired by the need for easy-to-use OCR tools for various applications.
