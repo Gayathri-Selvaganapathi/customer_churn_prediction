@@ -2,15 +2,13 @@
 This project is focused on predicting customer churn using the XGBoost algorithm, which is well-suited for classification tasks. The dataset used for this project is sourced from Kaggle and includes various features that help determine whether a customer will churn or not.
 
 # Table of Contents
-Introduction
-Dataset
-Installation
-Usage
-Model Building
-Hyperparameter Tuning
-Results
-Contributing
-License
+  * Introduction
+  * Dataset
+  * Installation
+  * Usage
+  * Model Building
+  * Hyperparameter Tuning
+  * Results
 
 # Introduction
 Customer churn prediction is a crucial aspect of maintaining a customer base, particularly for subscription-based businesses. By predicting which customers are likely to leave, companies can take proactive measures to retain them. In this project, we employ the XGBoost classifier to build a model that predicts customer churn based on historical data.
